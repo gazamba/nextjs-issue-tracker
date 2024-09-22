@@ -19,6 +19,9 @@
 .DS_Store
 *.pem
 
+# prisma
+# prisma/migrations/*/migration.sql // comment to keep migration.sql files, but it's not recommended in a real project
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -14,7 +14,7 @@ const NavBar = () => {
     { label: "Issues", href: "/issues" },
   ];
   return (
-    <nav className="flex space-x-6 border-b mb-5 h-14 items-center p-6">
+    <nav className="flex space-x-6 border-b mb-5 h-14 items-center p-5">
       <Link href={"/"}>
         <AiFillBug />
       </Link>

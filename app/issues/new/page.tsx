@@ -22,9 +22,6 @@ const NewIssuePage = () => {
     <div className="max-w-xl">
       {error && (
         <Callout.Root color="red" className="mb-5">
-          {/* <Callout.Icon>
-          <InfoCircledIcon />
-        </Callout.Icon> */}
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}

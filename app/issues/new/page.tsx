@@ -12,10 +12,11 @@ import { newIssueSchema } from "@/app/validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
+import delay from "delay";
 
 type IssueForm = z.infer<typeof newIssueSchema>;
 
-const NewIssuePage = () => {
+const NewIssuePage = async () => {
   const router = useRouter();
   const [error, setError] = useState("");
   const [isSubitting, setIsSubitting] = useState(false);

@@ -9,6 +9,8 @@ export const dynamic = "force-dynamic";
 const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
 
+  // TODO: Check about remove caching for getting issues.
+
   return (
     <div>
       <IssueActions />

@@ -14,6 +14,10 @@ import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 import delay from "delay";
 
+// const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+//   ssr: false,
+// }); // dynamic import to prevent SSR for lazy loading
+
 type IssueForm = z.infer<typeof newIssueSchema>;
 
 const NewIssuePage = async () => {
@@ -39,6 +43,7 @@ const NewIssuePage = async () => {
     }
   }); // good practice to keep logic separate from TSX markup return
 
+  await delay(1000);
   return (
     <div className="max-w-xl">
       {error && (
@@ -60,7 +65,7 @@ const NewIssuePage = async () => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button disabled={isSubitting}>
+        <Button style={{ cursor: "pointer" }} disabled={isSubitting}>
           Submit New Issue
           {isSubitting && <Spinner />}
         </Button>

@@ -8,7 +8,7 @@ import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { newIssueSchema } from "@/app/validationSchemas";
+import { issueSchema } from "@/app/validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
@@ -19,7 +19,7 @@ import { Issue } from "@prisma/client";
 //   ssr: false,
 // }); // dynamic import to prevent SSR for lazy loading
 
-type IssueFormData = z.infer<typeof newIssueSchema>;
+type IssueFormData = z.infer<typeof issueSchema>;
 
 const IssueForm = async ({ issue }: { issue?: Issue }) => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const IssueForm = async ({ issue }: { issue?: Issue }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IssueFormData>({
-    resolver: zodResolver(newIssueSchema),
+    resolver: zodResolver(issueSchema),
   });
 
   const onSubmit = handleSubmit(async (data) => {

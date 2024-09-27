@@ -5,6 +5,9 @@ import prisma from "@/prisma/client";
 import { env } from "process";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     authorized: async ({ auth }) => {
       // Logged in users are authenticated, otherwise redirect to login page

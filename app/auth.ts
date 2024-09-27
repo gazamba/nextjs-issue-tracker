@@ -5,6 +5,12 @@ import prisma from "@/prisma/client";
 import { env } from "process";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  callbacks: {
+    authorized: async ({ auth }) => {
+      // Logged in users are authenticated, otherwise redirect to login page
+      return !!auth;
+    },
+  },
   adapter: PrismaAdapter(prisma),
   providers: [
     Google({

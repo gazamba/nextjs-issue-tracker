@@ -12,7 +12,6 @@ import { issueSchema } from "@/app/validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
-import delay from "delay";
 import { Issue } from "@prisma/client";
 
 // const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
@@ -21,10 +20,10 @@ import { Issue } from "@prisma/client";
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
-const IssueForm = async ({ issue }: { issue?: Issue }) => {
+const IssueForm = ({ issue }: { issue?: Issue }) => {
   const router = useRouter();
   const [error, setError] = useState("");
-  const [isSubitting, setIsSubitting] = useState(false);
+  const [isSubmitting, setisSubmitting] = useState(false);
   const {
     register,
     control,
@@ -36,7 +35,7 @@ const IssueForm = async ({ issue }: { issue?: Issue }) => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      setIsSubitting(true);
+      setisSubmitting(true);
       if (issue) {
         axios.patch("/api/issues/" + issue.id, data);
       } else {
@@ -49,7 +48,6 @@ const IssueForm = async ({ issue }: { issue?: Issue }) => {
     }
   }); // good practice to keep logic separate from TSX markup return
 
-  await delay(1000);
   return (
     <div className="max-w-xl">
       {error && (
@@ -73,9 +71,9 @@ const IssueForm = async ({ issue }: { issue?: Issue }) => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button style={{ cursor: "pointer" }} disabled={isSubitting}>
+        <Button style={{ cursor: "pointer" }} disabled={isSubmitting}>
           {issue ? "Update Issue" : "Submit New Issue"}{" "}
-          {isSubitting && <Spinner />}
+          {isSubmitting && <Spinner />}
         </Button>
       </form>
     </div>

@@ -6,7 +6,14 @@ import { AiFillBug } from "react-icons/ai";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Box, Container, Flex } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Container,
+  DropdownMenu,
+  Flex,
+  Text,
+} from "@radix-ui/themes";
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -17,7 +24,7 @@ const NavBar = () => {
     { label: "Issues", href: "/issues" },
   ];
   return (
-    <nav className="border-b mb-5 h-14 p-5">
+    <nav className="border-b mb-5 h-14 p-3">
       <Container>
         <Flex justify="between">
           <Flex align="center" gap="3">
@@ -26,7 +33,7 @@ const NavBar = () => {
             </Link>
             <ul className="flex space-x-6">
               {links.map((link) => (
-                <li>
+                <li key={link.href}>
                   <Link
                     key={link.href}
                     href={link.href}
@@ -44,7 +51,25 @@ const NavBar = () => {
           </Flex>
           <Box>
             {status === "authenticated" && (
-              <Link href="/api/auth/signout">Log out</Link>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <Avatar
+                    fallback="?"
+                    src={session.user!.image!}
+                    size="2"
+                    radius="full"
+                    className="cursor-pointer"
+                  />
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content>
+                  <DropdownMenu.Label>
+                    <Text>{session.user!.email}</Text>
+                  </DropdownMenu.Label>
+                  <DropdownMenu.Item>
+                    <Link href="/api/auth/signout">Log out</Link>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
             )}
             {status === "unauthenticated" && (
               <Link href="/api/auth/signin">Login</Link>

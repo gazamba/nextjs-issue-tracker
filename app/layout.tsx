@@ -16,7 +16,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Issue Tracker",
-  description: "Issue tracker app built with Next.js and Prisma",
+  description: "Issue tracker app built with Next.js to manage issues",
 };
 
 export default function RootLayout({

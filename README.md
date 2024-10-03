@@ -1,4 +1,4 @@
-# Issue tracker built with next js!
+# Issue tracker with user authentication built with Next.js!
 
 [Open the app!](https://nextjs-issue-tracker-eight.vercel.app/)
 

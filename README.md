@@ -1,12 +1,15 @@
 # Issue tracker built with next js!
 
-<VERCEL DEPLOYMENT PENDING>
-
-This Issue tracker is built with React, TypeScript and Nextjs.
+[Open the app!](https://nextjs-issue-tracker-eight.vercel.app/)
 
 ## 📷 Image preview
 
-<SNAPSHOTS FROM  APP>
+Home with dashboard:
+<img width="1231" alt="Screenshot 2024-10-03 at 09 41 30" src="https://github.com/user-attachments/assets/01332908-c547-4285-8959-0f5e51198f61">
+
+Issues:
+<img width="1205" alt="Screenshot 2024-10-03 at 09 41 52" src="https://github.com/user-attachments/assets/ebffdbb1-06fe-4052-a799-63214101cd26">
+
 
 ## 🚀 Running Local
 
@@ -31,8 +34,6 @@ npm run dev
 - TypeScript: A typed superset of JavaScript.
 - Next.js: A React framework for building fast, server-side rendered web applications with full-stack capabilities
 - TaiwindCSS: A utility-first CSS framework for rapidly building custom user interfaces.
-- <MORE>
-  
-## 🎮 PENDING
-<PENDING>
-
+- Radix UI: A set of unstyled components for building accessible user interfaces in React.
+- Prisma: An open-source database toolkit for Node.js and TypeScript that simplifies database access and management.
+- Auth.js: An open-source library for handling authentication in web applications.

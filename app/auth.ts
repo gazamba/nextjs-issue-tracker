@@ -21,4 +21,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       clientSecret: env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+  secret: env.NEXTAUTH_SECRET,
+  trustHost: true,
 });

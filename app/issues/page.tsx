@@ -45,8 +45,6 @@ const IssuesPage = async ({ searchParams }: Props) => {
     where,
   });
 
-  // TODO: Check about remove caching for getting issues.
-
   return (
     <Flex direction="column" gap="3">
       <IssueActions />

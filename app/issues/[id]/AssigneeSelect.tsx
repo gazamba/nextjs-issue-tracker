@@ -21,7 +21,6 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
         assignedUserId: userId === "unassigned" ? null : userId,
       })
       .catch(() => toast.error("Failed to update assignee"));
-    // TODO: Style better the toast component
   };
 
   return (

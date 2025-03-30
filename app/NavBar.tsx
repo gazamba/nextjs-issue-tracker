@@ -7,6 +7,7 @@ import { AiFillBug } from "react-icons/ai";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { useTheme } from "next-themes";
 import {
   Avatar,
   Box,
@@ -15,6 +16,7 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 const NavBar = () => {
   return (
@@ -27,7 +29,10 @@ const NavBar = () => {
             </Link>
             <NavLinks />
           </Flex>
-          <AuthStatus />
+          <Flex align="center" gap="4">
+            <ThemeToggle />
+            <AuthStatus />
+          </Flex>
         </Flex>
       </Container>
     </nav>
@@ -36,6 +41,7 @@ const NavBar = () => {
 
 const NavLinks = () => {
   const currentPath = usePathname();
+  const { resolvedTheme } = useTheme();
   const links = [
     { label: "Dashboard", href: "/" },
     { label: "Issues", href: "/issues" },
@@ -50,7 +56,7 @@ const NavLinks = () => {
             href={link.href}
             className={classNames({
               "nav-link": true,
-              "!text-zinc-900": link.href === currentPath,
+              "!text-zinc-900 dark:!text-white": link.href === currentPath,
             })}
           >
             {link.label}
